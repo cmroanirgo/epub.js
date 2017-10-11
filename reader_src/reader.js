@@ -25,33 +25,19 @@ EPUBJS.Reader = function(bookPath, _options) {
 	var book;
 	var plugin;
 	var $viewer = $("#viewer");
-	var search = window.location.search;
 	var parameters;
 
 	this.settings = EPUBJS.core.defaults(_options || {}, {
 		bookPath : bookPath,
 		restore : false,
-		reload : false,
 		bookmarks : undefined,
 		annotations : undefined,
-		contained : undefined,
 		bookKey : undefined,
 		styles : undefined,
-		sidebarReflow: false,
 		generatePagination: false,
-		history: true
+		history: false
 	});
 
-	// Overide options with search parameters
-	if(search) {
-		parameters = search.slice(1).split("&");
-		parameters.forEach(function(p){
-			var split = p.split("=");
-			var name = split[0];
-			var value = split[1] || '';
-			reader.settings[name] = decodeURIComponent(value);
-		});
-	}
 
 	this.setBookKey(this.settings.bookPath); //-- This could be username + path or any unique string
 
@@ -86,7 +72,6 @@ EPUBJS.Reader = function(bookPath, _options) {
 	book.renderTo("viewer");
 
 	reader.ReaderController = EPUBJS.reader.ReaderController.call(reader, book);
-	reader.SettingsController = EPUBJS.reader.SettingsController.call(reader, book);
 	reader.ControlsController = EPUBJS.reader.ControlsController.call(reader, book);
 	reader.SidebarController = EPUBJS.reader.SidebarController.call(reader, book);
 	reader.BookmarksController = EPUBJS.reader.BookmarksController.call(reader, book);

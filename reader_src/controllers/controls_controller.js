@@ -8,7 +8,7 @@ EPUBJS.reader.ControlsController = function(book) {
 			$slider = $("#slider"),
 			$main = $("#main"),
 			$sidebar = $("#sidebar"),
-			$settings = $("#setting"),
+			
 			$bookmark = $("#bookmark");
 
 	var goOnline = function() {
@@ -57,10 +57,6 @@ EPUBJS.reader.ControlsController = function(book) {
 			});
 		}
 	}
-
-	$settings.on("click", function() {
-		reader.SettingsController.show();
-	});
 
 	$bookmark.on("click", function() {
 		var cfi = reader.book.getCurrentLocationCfi();
