@@ -92,6 +92,7 @@ EPUBJS.reader.ReaderController = function(book) {
 
 	// touch handling
 	if ($.fn.swipe) { // jquery.touchswipe.min.js
+		console.log('swipe enabled')
 		$_main.swipe( {
 			swipe:function(e, direction) {
 				switch((direction+'').toLowerCase()) {
@@ -112,6 +113,8 @@ EPUBJS.reader.ReaderController = function(book) {
 			maxTimeThreshold:1000
 		});	
 	}
+	else
+		console.log('swipe not enabled')
 	
 	book.on("renderer:spreads", function(bool){
 		if(bool) {
