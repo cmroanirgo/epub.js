@@ -3,9 +3,8 @@ EPUBJS.reader.ControlsController = function(book) {
 
 	var $store = $("#store"),
 			$fullscreen = $("#fullscreen"),
-			$fullscreenicon = $("#fullscreenicon"),
-			$cancelfullscreenicon = $("#cancelfullscreenicon"),
-			$slider = $("#slider"),
+			$menu = $("#menu"),
+			$sidebar_closer = $("#sidebar-closer"),
 			$main = $("#main"),
 			$sidebar = $("#sidebar"),
 			
@@ -26,17 +25,22 @@ EPUBJS.reader.ControlsController = function(book) {
 	book.on("book:online", goOnline);
 	book.on("book:offline", goOffline);
 
-	$slider.on("click", function () {
+	$menu.on("click", function () {
 		if(reader.sidebarOpen) {
 			reader.SidebarController.hide();
-			$slider.addClass("icon-menu");
-			$slider.removeClass("icon-right");
+			$menu.addClass("icon-menu");
+			$menu.removeClass("icon-cancel");
 		} else {
 			reader.SidebarController.show();
-			$slider.addClass("icon-right");
-			$slider.removeClass("icon-menu");
+			$menu.addClass("icon-cancel");
+			$menu.removeClass("icon-menu");
 		}
 	});
+	$sidebar_closer.on('click', function() {
+		reader.SidebarController.hide();
+		$menu.addClass("icon-menu");
+		$menu.removeClass("icon-right");
+	})
 
 	if(typeof screenfull !== 'undefined') {
 		$fullscreen.on("click", function() {
