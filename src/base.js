@@ -1,11 +1,12 @@
 'use strict';
 
 var EPUBJS = EPUBJS || {};
-EPUBJS.VERSION = "0.2.20-cm-fork";
+EPUBJS.VERSION = "0.2.22-cm-fork";
 
 EPUBJS.plugins = EPUBJS.plugins || {};
 
 EPUBJS.filePath = EPUBJS.filePath || "/epubjs/";
+//EPUBJS.cacheVersion = '1.2.3', optionally set by main script to add "?ver=1.2.3" to each css and js loaded. See core.js
 
 EPUBJS.Render = {};
 
