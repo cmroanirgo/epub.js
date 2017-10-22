@@ -844,6 +844,7 @@ EPUBJS.Book.prototype.displayChapter = function(chap, end, deferred){
 
 	book.currentChapter = chapter;
 
+	book.trigger("book:displayingChapter", chapter);
 	render = book.renderer.displayChapter(chapter, this.globalLayoutProperties);
 	if(cfi) {
 		book.renderer.gotoCfi(cfi);
